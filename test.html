@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>slider</title>
+
+        <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css"> -->
+        <!-- <link rel="stylesheet" href="/css/wise/snatch.css"> -->
+        <script src='jquery-1.11.1.min.js'></script>
+        <script src='jquery.gallery-slider.js'></script>
+        <style>
+        body {
+            margin: 0;
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .gallery-content {
+        	width: 800px;
+        	height: 400px;
+        }
+        .thumbs {
+        	width: 100%;
+        	height: 140px;
+        	overflow: hidden;
+        }
+        .thumbs ul li {
+        	float: left;
+        	width: 122px;
+        	height: 122px;
+        	margin-right: 20px;
+		    border: 0;
+		    cursor: pointer;
+        }
+        .thumbs ul li img {
+        	display: block;
+        	width: 122px;
+		    height: 122px;
+        }
+        .gallery-loader {
+        	position: absolute;
+		    top: 48%;
+		    left: 48%;
+		    border: 1px solid #CCC;
+		    z-index: 10;
+        }
+        .image-section {
+        	position: absolute;
+        	z-index: 9;
+        	overflow: hidden;
+        }
+        .btn-pre {
+            position: absolute;
+            left: 900px;
+            top: 0px;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            background-color: #fefefe;
+        }
+        .btn-next {
+            position: absolute;
+            left: 900px;
+            top: 200px;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            background-color: #f0f0f0;
+        }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var winHeight = $(window).height();
+                var winWidth = $(window).width();
+                var showImgHeight = winHeight - 306 - 40;
+                var showImgWidth = winWidth -520 -40;
+                var option = {
+                    'imageWidth': showImgWidth,
+                    'imageHeight': showImgHeight,
+                    'thumbMargin': 20,
+                    'thumbWidth': 122,
+                    'loader': '/images/pc/common/loader.gif',
+                    'start_index': 3,
+                    'afterImageVisible': function(index) {
+                        this.preloadAll();
+                    }
+                };
+
+                var slider = $('.gallery-content').gallerySlider(option);
+                function resizeWindow() {
+                    var winHeight = $(window).height();
+                    var winWidth = $(window).width();
+                    var showImgHeight = winHeight - 306 - 40;
+                    var showImgWidth = winWidth -520 -40;
+                    option.imageWidth = showImgWidth;
+                    option.imageHeight = showImgHeight;
+                    option.start_index = 5;
+                    slider.reloadSlider(option);
+                }
+
+                $(window).resize(function() {
+                    resizeWindow();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+        	<div class="gallery-content">
+        		<div class="image-wrapper">
+        			<!-- <div class="image-section">
+        				<img>
+        			</div> -->
+        			<!-- <img src="" class="gallery-loader"> -->
+        			<div class="btn-pre">
+        				<div class="pre-image">上一张</div>
+        			</div>
+        			<div class="btn-next">
+        				<div class="next-image">下一张</div>
+        			</div>
+        		</div>
+        		<div class="thumbs">
+        			<ul class="thumbs-list">
+        				<li data-src = "a1cb70d63ac0d5b355bbe619922e9181.jpg"><img src="a1205a0d54972d9d5b28fe1d8e90727e.jpg"></li>
+        				<li data-src = "9849473f3652f3c8070e973c32160870.jpg"><img src="00670757c3bef499614f4ec8a936981e.jpg"></li>
+        				<li data-src = "7480c653957bcef8051cb526a8b6d1b7.jpg"><img src="a16eba3259f8bdeaa5108ed39a18e57b.jpg"></li>
+        				<li data-src = "889bb7404610c8de11bd7fb80471d4e0.jpg"><img src="818162a1e6585e378f13e19a6758a4f3.jpg"></li>
+        				<li data-src = "167d3da5157a6f590416599bab93479a.jpg"><img src="0c283211cafc4952c27c8f2868bea978.jpg"></li>
+        				<li data-src = "b2aa707e14751baefc4971be3c3f5a9a.jpg"><img src="a80196b9550c53a5d7f60bdbaf9a170b.jpg"></li>
+        				<li data-src = "780f11660280cad198ed2fabdd1cbf87.jpg"><img src="17dc9e9e5b521358af0a96e45dd6a40e.jpg"></li>
+        				<li data-src = "773f49404a77345a00cc7dac3bca653d.jpg"><img src="f5d05a5abec7d747b3bdb7b42c08ee14.jpg"></li>
+        			</ul>
+        		</div>
+        	</div>
+        </div>
+    </body>
+</html>
